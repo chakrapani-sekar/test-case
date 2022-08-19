@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class Employee {
+   int empno;
+   String ename;
+   int salary;
+ Employee(int empno, String ename, int salary){
+  this.empno= empno;
+  this.ename=ename;
+  this.salary=salary;
+ }
+ public int getEmpno(){
+  return empno;
+ }
+ public int  getSalary(){
+  return salary;
+ }
+ public String getEname(){
+  return ename;
+ }
+ public String toString(){
+ return empno+" "+ename+" "+salary;
+ }
+
+    public static void main(String[] args) {
+      Collection<Employee> c = new ArrayList<Employee>();
+       Scanner sc = new Scanner(System.in);
+        int a;
+        do{
+          System.out.println("1.Add details");
+          System.out.println("2.Display details");
+          System.out.println("3.Find details");
+          System.out.println("4.Delete details");
+          System.out.print("Enter choice");
+          a = sc.nextInt();
+          switch(a){
+            case 1:
+            System.out.println("Enter Empno:");
+            int eno = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Enter Empname:");
+            String ename = sc.nextLine();
+            System.out.println("Enter salary:");
+            int salary = sc.nextInt();
+            c.add(new Employee(eno,ename,salary));
+            break;
+
+           case 2:
+           System.out.println(c);
+           break;
+
+           case 3:
+           Boolean found = false;
+           System.out.print("Emp no?:");
+           int empno = sc.nextInt();
+           Iterator<Employee> i = c.iterator();
+           while(i.hasNext()){
+            Employee e = i.next();
+            if(e.getEmpno()==empno){
+              System.out.println(e); 
+              found = true;      
+            }
+           }
+           if(!found){
+            System.out.println("not found");
+           }
+           break;
+          }
+        }while(a!=0);
+    }
+  
+}
