@@ -1,10 +1,45 @@
 import java.util.*;
+public class Case {
+    Collection<Testing> c = new LinkedList<>();
+    LinkedHashMap list = new LinkedHashMap<>();
+    Scanner scan = new Scanner(System.in);
+    Boolean found = false;
+    int empno;
+    int eno;
+ 
+    public void case1(){
+       
+        System.out.println("Enter Empno:");
+             eno = scan.nextInt();
+            scan.nextLine();
+            System.out.println("Enter Empname:");
+            String ename = scan.nextLine();
+            System.out.println("Enter salary:");
+            int salary = scan.nextInt();
+            c.add(new Testing(eno,ename,salary));
+        
+    }
+    public void case2(){
+        System.out.println(c);
+    }
+    public void case3(){
 
-public class Employee {
+        System.out.print("Emp no?:");
+        empno = scan.nextInt();
+        if(eno==empno){
+            System.out.println(c);
+        }
+
+    }
+    
+}
+import java.util.*;
+
+public class Testing {
    int empno;
    String ename;
    int salary;
- Employee(int empno, String ename, int salary){
+ Testing(int empno, String ename, int salary){
   this.empno= empno;
   this.ename=ename;
   this.salary=salary;
@@ -23,7 +58,7 @@ public class Employee {
  }
 
     public static void main(String[] args) {
-      Collection<Employee> c = new ArrayList<Employee>();
+      Case b = new Case();
        Scanner scan = new Scanner(System.in);
         int a;
         do{
@@ -35,55 +70,17 @@ public class Employee {
           a = scan.nextInt();
           switch(a){
             case 1:
-            System.out.println("Enter Empno:");
-            int eno = scan.nextInt();
-            scan.nextLine();
-            System.out.println("Enter Empname:");
-            String ename = scan.nextLine();
-            System.out.println("Enter salary:");
-            int salary = scan.nextInt();
-            c.add(new Employee(eno,ename,salary));
+           b.case1();
             break;
 
            case 2:
-           System.out.println(c);
+           b.case2();
            break;
 
            case 3:
-           Boolean found = false;
-           System.out.print("Emp no?:");
-           int empno = scan.nextInt();
-           Iterator<Employee> i = c.iterator();
-           while(i.hasNext()){
-            Employee e = i.next();
-            if(e.getEmpno()==empno){
-              System.out.println(e); 
-              found = true;      
-            }
-           }
-           if(!found){
-            System.out.println("not found");
-           }
+           b.case3();
            break;
-           case 4:
-            found = false;
-           System.out.print("Emp no?:");
-           empno = scan.nextInt();
-            i = c.iterator();
-           while(i.hasNext()){
-            Employee e = i.next();
-            if(e.getEmpno()==empno){
-              i.remove(); 
-              found = true;      
-            }
-           }
-           if(!found){
-            System.out.println("not found");
-           }
-           else{
-            System.out.println("Employee details removed");
-           }
-           break;
+           
           }
         }while(a!=0);
        scan.close();
